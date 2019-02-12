@@ -274,7 +274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29981effc714d3c4aa53b98980f117ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musclePower: 20
+  musclePower: 80
 --- !u!1 &153152031
 GameObject:
   m_ObjectHideFlags: 0
@@ -393,7 +393,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29981effc714d3c4aa53b98980f117ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musclePower: 45
+  musclePower: 75
 --- !u!1 &363616427
 GameObject:
   m_ObjectHideFlags: 0
@@ -790,7 +790,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29981effc714d3c4aa53b98980f117ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musclePower: 45
+  musclePower: 75
 --- !u!1 &770969214
 GameObject:
   m_ObjectHideFlags: 0
@@ -864,6 +864,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 887640579}
+  - component: {fileID: 887640584}
   - component: {fileID: 887640580}
   - component: {fileID: 887640583}
   - component: {fileID: 887640582}
@@ -906,7 +907,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 10
+  m_Mass: 1
   m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -993,6 +994,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.7, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &887640584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 887640578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec7ff783b00c2e04aa07a7395a30d895, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 1421866135}
 --- !u!1 &950441142
 GameObject:
   m_ObjectHideFlags: 0
@@ -1235,7 +1249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29981effc714d3c4aa53b98980f117ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musclePower: 20
+  musclePower: 80
 --- !u!1 &1219123118
 GameObject:
   m_ObjectHideFlags: 0
@@ -1384,7 +1398,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29981effc714d3c4aa53b98980f117ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musclePower: 10
+  musclePower: 50
 --- !u!1 &1411290766
 GameObject:
   m_ObjectHideFlags: 0
@@ -1547,7 +1561,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29981effc714d3c4aa53b98980f117ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musclePower: 45
+  musclePower: 75
 --- !u!1 &1472523924
 GameObject:
   m_ObjectHideFlags: 0
@@ -1770,7 +1784,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29981effc714d3c4aa53b98980f117ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musclePower: 10
+  musclePower: 50
 --- !u!1 &1688926967
 GameObject:
   m_ObjectHideFlags: 0
@@ -1889,7 +1903,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29981effc714d3c4aa53b98980f117ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musclePower: 45
+  musclePower: 75
 --- !u!1001 &1718210327
 PrefabInstance:
   m_ObjectHideFlags: 0

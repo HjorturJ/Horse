@@ -5,20 +5,20 @@ using UnityEngine;
 public class Muscle : MonoBehaviour {
     public float musclePower;
 
-    private float _localRot;
-    private Rigidbody2D _rb;
+    private float localRot;
+    private Rigidbody2D rb;
 
 
     private void Start() {
-        _localRot = transform.localRotation.eulerAngles.z;
-        _rb = GetComponent<Rigidbody2D>();
+        localRot = transform.localRotation.eulerAngles.z;
+        rb = GetComponent<Rigidbody2D>();
 
     }
 
     private void FixedUpdate() {
-        float tempRot = _localRot;
+        float tempRot = localRot;
         var angleForce = Mathf.DeltaAngle(transform.localRotation.eulerAngles.z, tempRot);
         var angleDirection = Mathf.Clamp(angleForce, -1f, 1f);
-        _rb.AddTorque(angleDirection * musclePower, ForceMode2D.Force);
+        rb.AddTorque(angleDirection * musclePower, ForceMode2D.Force);
     }
 }
