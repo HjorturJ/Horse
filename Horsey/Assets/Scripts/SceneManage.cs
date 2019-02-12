@@ -7,9 +7,10 @@ public class SceneManage : MonoBehaviour
 {
     void Update ()
     {
-        if(Input.GetKey("r") || Input.GetKey("space"))
+        if(Input.GetKey(KeyCode.R) || Input.GetKey(KeyCode.Space))
         {
-            SceneManager.LoadScene(1);
+			Debug.Log("Pressed");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
         if(Input.GetKey(KeyCode.Escape))
@@ -25,6 +26,6 @@ public class SceneManage : MonoBehaviour
 
     public void EndGame()
     {
-    Application.Quit();
+        Application.Quit();
     }
 }
