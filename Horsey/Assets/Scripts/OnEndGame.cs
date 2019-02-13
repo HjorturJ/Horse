@@ -22,9 +22,14 @@ public class OnEndGame : MonoBehaviour {
         }
 
         if(collision.gameObject.tag == "Win") {
-            //bomb dissapears
-            //Win screen appears
+            Win();
         }
+    }
+
+    void Win() {
+        Destroy(gameObject);
+        horseMovement.enabled = false;
+        //Set win menu on
     }
 
     void Explode() {
