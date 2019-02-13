@@ -7,13 +7,13 @@ public class SceneManage : MonoBehaviour
 {
     void Update ()
     {
-        if(Input.GetKey(KeyCode.R) || Input.GetKey(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.R) || Input.GetKeyDown(KeyCode.Space))
         {
             Debug.Log("Restart");
 			RestartGame();
         }
 
-        if(Input.GetKey(KeyCode.Escape))
+        if(Input.GetKeyDown(KeyCode.Escape))
         {
             Debug.Log("Pause");
             SceneManager.LoadScene("Pause_Scene");
