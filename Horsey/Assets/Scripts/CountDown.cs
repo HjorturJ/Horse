@@ -9,12 +9,14 @@ public class CountDown : MonoBehaviour
     public float countdown = 3.0f;
     public bool stop;
     AudioSource shots;
+    public GameObject movement;
 
     // Start is called before the first frame update
     void Start()
     {
         text = GameObject.Find("CountDown").GetComponent<Text>();
         shots = GameObject.Find("Bullets").GetComponent<AudioSource>();
+        movement.GetComponent<HorseMovement>().enabled = false;
         text.text = "3";
         stop = false;
     }
@@ -39,6 +41,7 @@ public class CountDown : MonoBehaviour
     public IEnumerator FadeTextToZeroAlpha(float t, Text i)
     {
         playSound();
+        movement.GetComponent<HorseMovement>().enabled = true;
         i.color = new Color(i.color.r, i.color.g, i.color.b, 1);
         while (i.color.a > 0.0f)
         {
