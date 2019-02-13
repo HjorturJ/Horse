@@ -5,6 +5,7 @@ using UnityEngine;
 public class OnEndGame : MonoBehaviour {
     HorseMovement horseMovement;
     public GameObject gameOver;
+    public GameObject winMenu;
     bool hasExploded = false;
 
     public GameObject explosionEffect;
@@ -27,17 +28,17 @@ public class OnEndGame : MonoBehaviour {
     }
 
     void Win() {
-        Destroy(gameObject);
         horseMovement.enabled = false;
-        //Set win menu on
+        winMenu.SetActive(true);
+        Destroy(gameObject);
     }
 
     void Explode() {
         Instantiate(explosionEffect, transform.position, transform.rotation);
-        Destroy(gameObject);
         //This should destroy all of the horse aswell
-        Destroy(horseMovement.transform.parent.transform.parent);
+        Destroy(horseMovement.transform.parent.transform.parent.gameObject);
         horseMovement.enabled = false;
         gameOver.SetActive(true);
+        Destroy(gameObject);
     }
 }

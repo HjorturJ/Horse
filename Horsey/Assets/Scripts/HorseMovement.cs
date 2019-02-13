@@ -77,9 +77,6 @@ public class HorseMovement : MonoBehaviour {
         if (isThirdRunning && isSixthRunning) {
             rhythm = true;
             StartCoroutine(RhythmFalloff());
-
-            Debug.Log("Rythm!");
-            
         }
 
         if(rhythm) {
