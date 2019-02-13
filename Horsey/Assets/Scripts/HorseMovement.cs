@@ -3,10 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class HorseMovement : MonoBehaviour {
+
+    public float buttonPower = -300f;
+
     public Rigidbody2D FrontFrontLeg;
     public Rigidbody2D FrontBackLeg;
     public Rigidbody2D BackFrontLeg;
     public Rigidbody2D BackBackLeg;
+
+    public Rigidbody2D FrontFrontLegLower;
+    public Rigidbody2D FrontBackLegLower;
+    public Rigidbody2D BackFrontLegLower;
+    public Rigidbody2D BackBackLegLower;
+
+    private Rigidbody2D body;
 
     private float firstTimer;
     private float secondTimer;
@@ -22,10 +32,13 @@ public class HorseMovement : MonoBehaviour {
     private bool isFifthRunning;
     private bool isSixthRunning;
 
+    private bool rhythm;
+
     void Start() {
+        body = GetComponent<Rigidbody2D>();
     }
 
-    void Update() {
+    void FixedUpdate() {
         if (firstTimer > 0.2f || secondTimer > 0.2f || thirdTimer > 0.2f ||
             fourthTimer > 0.2f || fifthTimer > 0.2f || sixthTimer > 0.2f) {
 
@@ -64,23 +77,74 @@ public class HorseMovement : MonoBehaviour {
         if (isThirdRunning && isSixthRunning) {
             //Probbly want to test having a timer here that keeps the rythm bool active for a tiny amount of time and keeps it going for some player wiggle room
             //maybe not, depends on what you make rythm do
+
+            rhythm = true;
+            StartCoroutine(RhythmFalloff());
+
             Debug.Log("Rythm!");
+            
+        }
+
+        if(rhythm) {
+            body.constraints = RigidbodyConstraints2D.FreezeRotation;
+            body.AddForce(new Vector2(5f, 0.2f) * 100, ForceMode2D.Force);
+            FrontFrontLeg.AddTorque(buttonPower, ForceMode2D.Force);
+            FrontBackLeg.AddTorque(buttonPower, ForceMode2D.Force);
+            BackFrontLeg.AddTorque(buttonPower, ForceMode2D.Force);
+            BackBackLeg.AddTorque(buttonPower, ForceMode2D.Force);
+        }
+        else {
+            if (Input.GetKeyDown(KeyCode.L))
+                FrontFrontLeg.AddTorque(buttonPower * 0.1f, ForceMode2D.Impulse);
+
+            if (Input.GetKeyDown(KeyCode.K))
+                FrontBackLeg.AddTorque(buttonPower *0.1f, ForceMode2D.Impulse);
+
+            if (Input.GetKeyDown(KeyCode.J)) {
+                FrontFrontLegLower.AddTorque(100f, ForceMode2D.Impulse);
+                FrontBackLegLower.AddTorque(100f, ForceMode2D.Impulse);
+            }
+                
+
+            if (Input.GetKeyDown(KeyCode.A))
+                BackFrontLeg.AddTorque(buttonPower * 0.1f, ForceMode2D.Impulse);
+
+            if (Input.GetKeyDown(KeyCode.S))
+                BackBackLeg.AddTorque(buttonPower * 0.1f, ForceMode2D.Impulse);
+
+            if (Input.GetKeyDown(KeyCode.D)) {
+                BackFrontLegLower.AddTorque(100f, ForceMode2D.Impulse);
+                BackBackLegLower.AddTorque(100f, ForceMode2D.Impulse);
+            }
+
         }
 
 
+
+
         //Tests
-        if (Input.GetKey(KeyCode.R)) {
-            var power = -300f;
+        //If you are in rythm, freeze rotation Z on the body rigidbody and add v2 right force and slight upward force and spin legs a lot
+        //Otherwise, apply standard force to each leg sepratly and let the horse flop around
+        if (Input.GetKey(KeyCode.H)) {
+            body.AddForce(new Vector2(1f, 0.2f) * 100, ForceMode2D.Force);
             //rb.AddForce(Vector2.right * 500, ForceMode2D.Force);
-            FrontFrontLeg.AddTorque(power, ForceMode2D.Force);
-            FrontBackLeg.AddTorque(power, ForceMode2D.Force);
-            BackFrontLeg.AddTorque(power, ForceMode2D.Force);
-            BackBackLeg.AddTorque(power, ForceMode2D.Force);
+            FrontFrontLeg.AddTorque(buttonPower, ForceMode2D.Force);
+            FrontBackLeg.AddTorque(buttonPower, ForceMode2D.Force);
+
+            BackFrontLeg.AddTorque(buttonPower, ForceMode2D.Force);
+            BackBackLeg.AddTorque(buttonPower, ForceMode2D.Force);
         }
     }
 
     private void resetTimers() {
         firstTimer = secondTimer = thirdTimer = fourthTimer = fifthTimer = sixthTimer = 0f;
         isFirstRunning = isSecondRunning = isThirdRunning = isFourthRunning = isFifthRunning = isSixthRunning = false;
+    }
+
+    private IEnumerator RhythmFalloff() {
+
+        yield return new WaitForSeconds(0.2f);
+        if(!isThirdRunning && !isSixthRunning)
+            rhythm = false;
     }
 }
