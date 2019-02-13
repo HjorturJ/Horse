@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class HorseMovement : MonoBehaviour {
-    public Rigidbody2D rb;
+    public Rigidbody2D FrontFrontLeg;
+    public Rigidbody2D FrontBackLeg;
+    public Rigidbody2D BackFrontLeg;
+    public Rigidbody2D BackBackLeg;
 
     private float firstTimer;
     private float secondTimer;
@@ -66,9 +69,13 @@ public class HorseMovement : MonoBehaviour {
 
 
         //Tests
-        if (Input.GetKeyDown(KeyCode.R)) {
+        if (Input.GetKey(KeyCode.R)) {
+            var power = -300f;
             //rb.AddForce(Vector2.right * 500, ForceMode2D.Force);
-            rb.AddTorque(-25f, ForceMode2D.Impulse);
+            FrontFrontLeg.AddTorque(power, ForceMode2D.Force);
+            FrontBackLeg.AddTorque(power, ForceMode2D.Force);
+            BackFrontLeg.AddTorque(power, ForceMode2D.Force);
+            BackBackLeg.AddTorque(power, ForceMode2D.Force);
         }
     }
 
