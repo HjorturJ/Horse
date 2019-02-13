@@ -8,6 +8,9 @@ public class Timer : MonoBehaviour {
     private float time;
     private bool timerStart = true;
     public float restartDelay = 0.1f;
+    bool hasExploded = false;
+
+    public GameObject explosionEffect;
 
     private void Start() {
         if(timerStart == true) {
@@ -17,7 +20,7 @@ public class Timer : MonoBehaviour {
 
     void StartCountDownTimer() {
         if(countDownText != null) {   
-            time = 70;
+            time = 5;
             countDownText.text = "02:00";
             InvokeRepeating("UpdateTimer", 0.0f, 0.01067f);
         }
@@ -35,14 +38,14 @@ public class Timer : MonoBehaviour {
             }
             if (time < 0.0) {
                 countDownText.text = "00:00";
-                Invoke("Restart", restartDelay);
+                Invoke("GameOver", restartDelay);
             }
         }
 
     }
-    void Restart() {
-        Debug.Log("Game over!");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    void GameOver() {
+        Instantiate(explosionEffect, transform.position, transform.rotation);
+        Destroy(gameObject.transform.parent.transform.parent.gameObject);
     }
 
 }
