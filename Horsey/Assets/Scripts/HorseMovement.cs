@@ -75,9 +75,6 @@ public class HorseMovement : MonoBehaviour {
 
 
         if (isThirdRunning && isSixthRunning) {
-            //Probbly want to test having a timer here that keeps the rythm bool active for a tiny amount of time and keeps it going for some player wiggle room
-            //maybe not, depends on what you make rythm do
-
             rhythm = true;
             StartCoroutine(RhythmFalloff());
 
@@ -94,6 +91,8 @@ public class HorseMovement : MonoBehaviour {
             BackBackLeg.AddTorque(buttonPower, ForceMode2D.Force);
         }
         else {
+            body.constraints = RigidbodyConstraints2D.None;
+
             if (Input.GetKeyDown(KeyCode.L))
                 FrontFrontLeg.AddTorque(buttonPower * 0.1f, ForceMode2D.Impulse);
 
@@ -101,8 +100,8 @@ public class HorseMovement : MonoBehaviour {
                 FrontBackLeg.AddTorque(buttonPower *0.1f, ForceMode2D.Impulse);
 
             if (Input.GetKeyDown(KeyCode.J)) {
-                FrontFrontLegLower.AddTorque(100f, ForceMode2D.Impulse);
-                FrontBackLegLower.AddTorque(100f, ForceMode2D.Impulse);
+                FrontFrontLegLower.AddTorque(-50f, ForceMode2D.Impulse);
+                FrontBackLegLower.AddTorque(-50f, ForceMode2D.Impulse);
             }
                 
 
@@ -113,26 +112,10 @@ public class HorseMovement : MonoBehaviour {
                 BackBackLeg.AddTorque(buttonPower * 0.1f, ForceMode2D.Impulse);
 
             if (Input.GetKeyDown(KeyCode.D)) {
-                BackFrontLegLower.AddTorque(100f, ForceMode2D.Impulse);
-                BackBackLegLower.AddTorque(100f, ForceMode2D.Impulse);
+                BackFrontLegLower.AddTorque(-50f, ForceMode2D.Impulse);
+                BackBackLegLower.AddTorque(-50f, ForceMode2D.Impulse);
             }
 
-        }
-
-
-
-
-        //Tests
-        //If you are in rythm, freeze rotation Z on the body rigidbody and add v2 right force and slight upward force and spin legs a lot
-        //Otherwise, apply standard force to each leg sepratly and let the horse flop around
-        if (Input.GetKey(KeyCode.H)) {
-            body.AddForce(new Vector2(1f, 0.2f) * 100, ForceMode2D.Force);
-            //rb.AddForce(Vector2.right * 500, ForceMode2D.Force);
-            FrontFrontLeg.AddTorque(buttonPower, ForceMode2D.Force);
-            FrontBackLeg.AddTorque(buttonPower, ForceMode2D.Force);
-
-            BackFrontLeg.AddTorque(buttonPower, ForceMode2D.Force);
-            BackBackLeg.AddTorque(buttonPower, ForceMode2D.Force);
         }
     }
 
@@ -142,7 +125,6 @@ public class HorseMovement : MonoBehaviour {
     }
 
     private IEnumerator RhythmFalloff() {
-
         yield return new WaitForSeconds(0.2f);
         if(!isThirdRunning && !isSixthRunning)
             rhythm = false;
