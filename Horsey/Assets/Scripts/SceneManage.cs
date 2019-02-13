@@ -9,13 +9,14 @@ public class SceneManage : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.R) || Input.GetKey(KeyCode.Space))
         {
-			Debug.Log("Pressed");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            Debug.Log("Restart");
+			RestartGame();
         }
 
         if(Input.GetKey(KeyCode.Escape))
         {
-           EndGame();
+            Debug.Log("Pause");
+            SceneManager.LoadScene("Pause_Scene");
         }
     }
 
@@ -24,8 +25,15 @@ public class SceneManage : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
+    public void RestartGame()
+    {
+        Debug.Log("Restarted");
+        SceneManager.LoadScene("Main_Scene");
+    }
+
     public void EndGame()
     {
+        Debug.Log("Quit");
         Application.Quit();
     }
 }
