@@ -13,7 +13,7 @@ public class CountDown : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        text = GameObject.Find("Counter").GetComponent<Text>();
+        text = GameObject.Find("CountDown").GetComponent<Text>();
         shots = GameObject.Find("Bullets").GetComponent<AudioSource>();
         text.text = "3";
         stop = false;
