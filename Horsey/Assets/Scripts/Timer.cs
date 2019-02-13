@@ -20,7 +20,7 @@ public class Timer : MonoBehaviour {
 
     void StartCountDownTimer() {
         if(countDownText != null) {   
-            time = 5;
+            time = 123;
             countDownText.text = "02:00";
             InvokeRepeating("UpdateTimer", 0.0f, 0.01067f);
         }

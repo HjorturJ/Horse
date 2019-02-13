@@ -5,6 +5,7 @@ using UnityEngine;
 public class OnEndGame : MonoBehaviour
 {
     HorseMovement horseMovement;
+    public GameObject gameOver;
     bool hasExploded = false;
 
     public GameObject explosionEffect;
@@ -28,5 +29,6 @@ public class OnEndGame : MonoBehaviour
         Instantiate(explosionEffect, transform.position, transform.rotation);
         Destroy(gameObject);
         horseMovement.enabled = false;
+        gameOver.SetActive(true);
     }
 }
