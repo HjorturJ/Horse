@@ -8,7 +8,7 @@ public class Timer : MonoBehaviour {
     private float time;
     private bool timerStart = true;
     public float restartDelay = 0.1f;
-    bool hasExploded = false;
+    //bool hasExploded = false;
 
     public GameObject explosionEffect;
 
