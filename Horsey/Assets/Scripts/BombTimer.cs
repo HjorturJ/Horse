@@ -5,7 +5,7 @@ public class BombTimer : MonoBehaviour
 {
     public TextMeshProUGUI countDownText;
     public GameObject explosionEffect;
-    private float time = 120;
+    private float time = 30;
     CountDown countdown;
 
     private void Start()
