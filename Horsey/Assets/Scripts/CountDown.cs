@@ -10,6 +10,7 @@ public class CountDown : MonoBehaviour
     public bool stop;
     AudioSource shots;
     public GameObject movement;
+    public bool bombTimerStart = false;
 
     void Start()
     {
@@ -33,6 +34,7 @@ public class CountDown : MonoBehaviour
             text.text = "Go!";
             stop = true;
             StartCoroutine(FadeTextToZeroAlpha(1f, text));
+            bombTimerStart = true;
         }
     }
 
