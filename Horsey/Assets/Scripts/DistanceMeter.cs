@@ -8,6 +8,7 @@ public class DistanceMeter : MonoBehaviour {
     public Slider slider;
 
     private void Update() {
-        slider.value = horsePos.transform.position.x;
+        if(horsePos != null)
+            slider.value = horsePos.transform.position.x;
     }
 }

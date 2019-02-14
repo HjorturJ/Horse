@@ -11,6 +11,7 @@ public class CameraFollow : MonoBehaviour {
     }
 
     void LateUpdate() {
-        transform.position = new Vector3(toFollow.position.x + offset, transform.position.y, transform.position.z);
+        if(toFollow != null)
+            transform.position = new Vector3(toFollow.position.x + offset, transform.position.y, transform.position.z);
     }
 }
