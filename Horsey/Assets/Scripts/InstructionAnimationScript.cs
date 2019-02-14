@@ -9,7 +9,6 @@ public class InstructionAnimationScript : MonoBehaviour {
     void Start() {
         pressedImages = GetComponentsInChildren<Transform>();
 
-        //Debug.Log(pressedImages[0].name);
         for (int i = 1; i < pressedImages.Length; i++) {
             pressedImages[i].gameObject.SetActive(false);
         }
@@ -17,11 +16,9 @@ public class InstructionAnimationScript : MonoBehaviour {
     }
 
     IEnumerator ToggleAnimation() {
-        //1&6, 2&5, 3&4
         var i = 1;
         var k = 6;
         while (true) {
-            Debug.Log(i);
             if (i > 3) i = 1;
             if (k < 4) k = 6;
 
