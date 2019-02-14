@@ -18,11 +18,11 @@ public class InstructionAnimationScript : MonoBehaviour {
     IEnumerator ToggleAnimation() {
         var i = 1;
         var k = 6;
-        float speed = 0.5f;
+        float speed = 0.2f;
         while (true) {
             if (i > 3) i = 1;
             if (k < 4) k = 6;
-            if (speed < 0.2f) speed = 0.2f;
+            if (speed < 0.1f) speed = 0.1f;
 
             pressedImages[i].gameObject.SetActive(true);
             pressedImages[k].gameObject.SetActive(true);

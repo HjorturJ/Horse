@@ -34,7 +34,7 @@ public class HorseMovement : MonoBehaviour {
 
     private bool rhythm;
 
-    private float maxTime = 0.2f;
+    private float maxTime = 0.3f;
 
     void Start() {
         body = GetComponent<Rigidbody2D>();
@@ -122,7 +122,7 @@ public class HorseMovement : MonoBehaviour {
     }
 
     private IEnumerator RhythmFalloff() {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.25f);
         if (!isThirdRunning && !isSixthRunning)
             rhythm = false;
     }
