@@ -89,6 +89,7 @@ public class HorseMovement : MonoBehaviour {
             BackBackLeg.AddTorque(buttonPower, ForceMode2D.Force);
         }
         else {
+            body.constraints = RigidbodyConstraints2D.None;
             if (Input.GetKeyDown(KeyCode.L))
                 FrontFrontLeg.AddTorque(buttonPower * 0.1f, ForceMode2D.Impulse);
 
@@ -118,7 +119,6 @@ public class HorseMovement : MonoBehaviour {
     private void resetTimers() {
         firstTimer = secondTimer = thirdTimer = fourthTimer = fifthTimer = sixthTimer = 0f;
         isFirstRunning = isSecondRunning = isThirdRunning = isFourthRunning = isFifthRunning = isSixthRunning = false;
-        body.constraints = RigidbodyConstraints2D.None;
     }
 
     private IEnumerator RhythmFalloff() {
