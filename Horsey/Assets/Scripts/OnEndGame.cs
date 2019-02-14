@@ -8,6 +8,8 @@ public class OnEndGame : MonoBehaviour {
     public GameObject winMenu;
     bool hasExploded = false;
 
+    public GameObject instructions;
+
     public GameObject explosionEffect;
 
     private void Start() {
@@ -30,6 +32,7 @@ public class OnEndGame : MonoBehaviour {
     void Win() {
         horseMovement.enabled = false;
         winMenu.SetActive(true);
+        Destroy(instructions);
         Destroy(gameObject);
     }
 
@@ -39,6 +42,7 @@ public class OnEndGame : MonoBehaviour {
         Destroy(horseMovement.transform.parent.transform.parent.gameObject);
         horseMovement.enabled = false;
         gameOver.SetActive(true);
+        Destroy(instructions);
         Destroy(gameObject);
     }
 }
