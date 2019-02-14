@@ -12,7 +12,6 @@ public class CountDown : MonoBehaviour
     public GameObject movement;
     public bool bombTimerStart = false;
 
-    // Start is called before the first frame update
     void Start()
     {
         text = GameObject.Find("CountDown").GetComponent<Text>();
@@ -22,7 +21,6 @@ public class CountDown : MonoBehaviour
         stop = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(stop == false) {

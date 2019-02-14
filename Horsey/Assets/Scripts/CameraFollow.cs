@@ -7,7 +7,7 @@ public class CameraFollow : MonoBehaviour {
     public float offset;
 
     void Start() {
-        offset = 6.0f;
+        offset = 4.0f;
     }
 
     void LateUpdate() {

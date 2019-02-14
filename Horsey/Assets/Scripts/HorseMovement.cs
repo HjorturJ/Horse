@@ -34,13 +34,15 @@ public class HorseMovement : MonoBehaviour {
 
     private bool rhythm;
 
+    private float maxTime = 1f;
+
     void Start() {
         body = GetComponent<Rigidbody2D>();
     }
 
     void FixedUpdate() {
-        if (firstTimer > 0.2f || secondTimer > 0.2f || thirdTimer > 0.2f ||
-            fourthTimer > 0.2f || fifthTimer > 0.2f || sixthTimer > 0.2f) {
+        if (firstTimer > maxTime || secondTimer > maxTime || thirdTimer > maxTime ||
+            fourthTimer > maxTime || fifthTimer > maxTime || sixthTimer > maxTime) {
 
             resetTimers();
         }
@@ -68,7 +70,6 @@ public class HorseMovement : MonoBehaviour {
         if (isFirstRunning && isThirdRunning && !isSecondRunning) resetTimers();
         if (isFourthRunning && isSixthRunning && !isFifthRunning) resetTimers();
 
-        //If you press the buttons on the same frame you are spamming
         if (Input.GetKeyDown(KeyCode.L) && (Input.GetKeyDown(KeyCode.J) || Input.GetKeyDown(KeyCode.K) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))) resetTimers();
 
         if (Input.GetKeyDown(KeyCode.A) && (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.K) || Input.GetKeyDown(KeyCode.J))) resetTimers();
@@ -88,8 +89,6 @@ public class HorseMovement : MonoBehaviour {
             BackBackLeg.AddTorque(buttonPower, ForceMode2D.Force);
         }
         else {
-            body.constraints = RigidbodyConstraints2D.None;
-
             if (Input.GetKeyDown(KeyCode.L))
                 FrontFrontLeg.AddTorque(buttonPower * 0.1f, ForceMode2D.Impulse);
 
@@ -119,11 +118,12 @@ public class HorseMovement : MonoBehaviour {
     private void resetTimers() {
         firstTimer = secondTimer = thirdTimer = fourthTimer = fifthTimer = sixthTimer = 0f;
         isFirstRunning = isSecondRunning = isThirdRunning = isFourthRunning = isFifthRunning = isSixthRunning = false;
+        body.constraints = RigidbodyConstraints2D.None;
     }
 
     private IEnumerator RhythmFalloff() {
-        yield return new WaitForSeconds(0.2f);
-        if(!isThirdRunning && !isSixthRunning)
+        yield return new WaitForSeconds(0.5f);
+        if (!isThirdRunning && !isSixthRunning)
             rhythm = false;
     }
 }
