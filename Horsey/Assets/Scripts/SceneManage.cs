@@ -18,6 +18,14 @@ public class SceneManage : MonoBehaviour
             //Debug.Log("Pause");
             EndGame();
         }
+
+        if(SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            if (Input.anyKey)
+            {
+                PlayGame();
+            }
+        }
     }
 
     public void PlayGame()
