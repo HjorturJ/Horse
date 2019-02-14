@@ -6,7 +6,7 @@ public class InstructionAnimationScript : MonoBehaviour {
 
     private Transform[] pressedImages;
 
-    void Start() {
+    void OnEnable() {
         pressedImages = GetComponentsInChildren<Transform>();
 
         for (int i = 1; i < pressedImages.Length; i++) {

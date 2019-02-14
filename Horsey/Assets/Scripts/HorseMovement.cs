@@ -34,7 +34,7 @@ public class HorseMovement : MonoBehaviour {
 
     private bool rhythm;
 
-    private float maxTime = 1f;
+    private float maxTime = 0.3f;
 
     void Start() {
         body = GetComponent<Rigidbody2D>();

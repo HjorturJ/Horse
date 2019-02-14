@@ -11,6 +11,7 @@ public class CountDown : MonoBehaviour
     AudioSource shots;
     public GameObject movement;
     public bool bombTimerStart = false;
+    public GameObject instructions;
 
     void Start()
     {
@@ -19,6 +20,7 @@ public class CountDown : MonoBehaviour
         movement.GetComponent<HorseMovement>().enabled = false;
         text.text = "3";
         stop = false;
+        instructions.SetActive(false);
     }
 
     void Update()
@@ -35,6 +37,7 @@ public class CountDown : MonoBehaviour
             stop = true;
             StartCoroutine(FadeTextToZeroAlpha(1f, text));
             bombTimerStart = true;
+            instructions.SetActive(true);
         }
     }
 
