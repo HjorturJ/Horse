@@ -1463,6 +1463,21 @@ PrefabInstance:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3751886276432091791, guid: 7e1d2d20a0dbd4baa87990e14641d6de,
+        type: 3}
+      propertyPath: m_text
+      value: 00:30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3751886276432091791, guid: 7e1d2d20a0dbd4baa87990e14641d6de,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3751886276432091791, guid: 7e1d2d20a0dbd4baa87990e14641d6de,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7770524657810472278, guid: 7e1d2d20a0dbd4baa87990e14641d6de,
         type: 3}
       propertyPath: m_Offset.x
