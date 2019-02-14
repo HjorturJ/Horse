@@ -15,8 +15,8 @@ public class SceneManage : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            Debug.Log("Pause");
-            SceneManager.LoadScene("Pause_Scene");
+            //Debug.Log("Pause");
+            EndGame();
         }
     }
 

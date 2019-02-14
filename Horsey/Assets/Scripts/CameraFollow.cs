@@ -10,10 +10,8 @@ public class CameraFollow : MonoBehaviour {
         offset = 6.0f;
     }
 
-    void LateUpdate(){
-        if (toFollow)
-        {
+    void LateUpdate() {
+        if(toFollow != null)
             transform.position = new Vector3(toFollow.position.x + offset, transform.position.y, transform.position.z);
-        }
     }
 }
