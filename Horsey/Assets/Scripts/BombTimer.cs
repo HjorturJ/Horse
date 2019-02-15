@@ -7,10 +7,12 @@ public class BombTimer : MonoBehaviour
     public GameObject explosionEffect;
     private float time = 30;
     CountDown countdown;
+    OnEndGame endGame;
 
     private void Start()
     {
         countdown = FindObjectOfType<CountDown>();
+        endGame = FindObjectOfType<OnEndGame>();
     }
 
     void Update()
@@ -26,17 +28,18 @@ public class BombTimer : MonoBehaviour
             {
                 countDownText.color = Color.red;
             }
-            if (time < 0.0)
+            if (time <= 0.0)
             {
                 countDownText.text = "00:00";
-                Invoke("GameOver", 0.1f);
+                endGame.Explode();
+                //Invoke("GameOver", 0.1f);
             }
         }
 
-    }
+    }/*
     void GameOver()
     {
         Instantiate(explosionEffect, transform.position, transform.rotation);
         Destroy(gameObject.transform.parent.transform.parent.gameObject);
-    }
+    }*/
 }

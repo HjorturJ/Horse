@@ -36,7 +36,7 @@ public class OnEndGame : MonoBehaviour {
         Destroy(gameObject);
     }
 
-    void Explode() {
+    public void Explode() {
         Instantiate(explosionEffect, transform.position, transform.rotation);
         //This should destroy all of the horse aswell
         Destroy(horseMovement.transform.parent.transform.parent.gameObject);
