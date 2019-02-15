@@ -32,7 +32,7 @@ public class HorseMovement : MonoBehaviour {
     private bool isFifthRunning;
     private bool isSixthRunning;
 
-    private bool rhythm;
+    public bool rhythm;
 
     private float maxTime = 0.3f;
 
